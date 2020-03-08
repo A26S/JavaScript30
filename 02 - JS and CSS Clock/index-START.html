@@ -2,7 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <script src="work.js" defer ></script>
   <title>JS + CSS Clock</title>
+
 </head>
 <body>
 
@@ -62,12 +64,25 @@
       background: black;
       position: absolute;
       top: 50%;
+      transform: rotate(90deg);
+      transform-origin: right;
     }
 
   </style>
 
   <script>
-
+    // const hands = document.querySelectorAll('.second-hand')
+    // // let i = 90
+    // setInterval(() => {
+    //   const date = new Date()
+    //   console.log(date.getSeconds())
+    //   let currentSecond = date.getSeconds() + 90
+    //   console.log(currentSecond)
+    //   hands.forEach(hand => setInterval(() => {
+    //     hand.setAttribute("style", `transform: rotate(${currentSecond + 6}deg);`)
+    //     currentSecond += 6
+    //   }, 1000))
+    // }, 1000)
 
   </script>
 </body>
