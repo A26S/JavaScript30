@@ -22,6 +22,22 @@
 
   <style>
 
+    :root {
+      --spacing: 10px;
+      --blur: 10px;
+      --base: blanchedalmond;
+    }
+
+    .hl {
+      color: var(--base);
+    }
+
+    img {
+      background-color: var(--base);
+      padding: var(--spacing);
+      filter: blur(var(--blur));
+    }
+
     /*
       misc styles, nothing to do with CSS variables
     */
@@ -45,6 +61,16 @@
   </style>
 
   <script>
+
+    const inputs = document.querySelectorAll('input')
+    console.log(inputs)
+    inputs.forEach(input => input.addEventListener('change', () => {
+      const suffix = input.name !== 'base' ? 'px' : ''
+      // console.log(input.value)
+      document.documentElement.style.setProperty(
+        `--${input.name}`, input.value + suffix
+      )
+    }))
   </script>
 
 </body>
