@@ -8,6 +8,6 @@ window.addEventListener("keydown", e => {
         audioDiv.classList.add('playing')
         setTimeout(() => {
             audioDiv.classList.remove('playing')
-        }, 100)
+        }, 70)
     } 
 })
