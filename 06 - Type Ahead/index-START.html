@@ -14,9 +14,35 @@
       <li>or a state</li>
     </ul>
   </form>
-<script>
-const endpoint = 'https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json';
+  <script>
+  const endpoint = 'https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json';
+  const searchBar = document.querySelector('input.search') 
+  const suggestions = document.querySelector('ul.suggestions') 
 
-</script>
+  const makeRequest = async () => {
+    const response = await fetch(endpoint)
+    const data = await response.json()
+
+    searchBar.addEventListener('change', e => {
+      suggestions.innerHTML = null
+      const filtered = data.filter(place => {
+        const city = place.city.toLowerCase()
+        const state = place.state.toLowerCase()
+        const input = e.target.value.toLowerCase()
+        return (city.includes(input) || state.includes(input))
+      })
+      filtered.map(place => {
+        const li = document.createElement('li')
+        const span1 = document.createElement('span')
+        span1.innerText = place.city + ', ' + place.state
+        const span2 = document.createElement('span')
+        span2.innerText = place.population.toLocaleString()
+        li.append(span1,span2)
+        suggestions.append(li)
+      })
+    })
+  }
+  makeRequest()
+  </script>
 </body>
 </html>
